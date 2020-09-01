@@ -1,4 +1,6 @@
-# Write your code here
+# This project was developed following Hyperskill.org's "Simple Banking System" project.
+# Additional functionality has been added.
+
 import random
 import sqlite3
 random.seed(1)
@@ -12,7 +14,7 @@ class BankMachine:
         self.power = 'ON'
         self.conn = sqlite3.connect('card.s3db')
         self.cur = self.conn.cursor()
-        self.cur.execute('''DROP TABLE card''')
+        self.cur.execute('''DROP TABLE card''')  # Comment out if not debugging.
         self.conn.commit()
         self.cur.execute('''CREATE TABLE IF NOT EXISTS card(
                         id INTEGER PRIMARY KEY AUTOINCREMENT, 
@@ -37,6 +39,7 @@ class BankMachine:
             if menu_input == '0':  # exit
                 print('Bye!')
                 self.power == 'OFF'
+                # Comment out the following three lines if not debugging.
                 #self.cur.execute('SELECT * FROM card')
                 #query = self.cur.fetchall()
                 #print(query)
